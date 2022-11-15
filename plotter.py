@@ -76,12 +76,12 @@ for i in Y:
 res_lamb=max(Y[[i for i, x in enumerate(R_S) if x == max(R_S)]])
 
 
-plt.plot(Y, R_S, label=r'$|R_{s}^{2}|$')
+plt.plot(Y, R_S, label=r'$|R_{p}^{2}|$')
 #plt.axvline(res_lamb, color='red', lw=1, label=r'$\lambda_{r}$ - resonance')
 ax2.set_xlim(xmin=0)
 ax2.set_ylim(ymin=0)
 ax2.set_xlabel(r'$\lambda$ ($\mu m$)')
-plt.title(r"Dependence $|R_{s}^{2}|$ from $\lambda$ for "+ fr"$\theta_1={angle_deg}^\circ$")
+plt.title(r"Dependence $|R_{p}^{2}|$ from $\lambda$ for "+ fr"$\theta_1={angle_deg}^\circ$")
 
 plt.legend()
 plt.grid()
@@ -101,11 +101,11 @@ fig1 = plt.figure(1)
 
 ax1 = plt.gca()
 
-plt.plot(X, calc_p_polaris_r(X, lamb), label=r'$|R_{s}^{2}|$')
+plt.plot(X, calc_p_polaris_r(X, lamb), label=r'$|R_{p}^{2}|$')
 plt.axvline(theta0, color='red', lw=1, label=fr'Resonance angle: ${theta0_deg}^\circ$ ')
 plt.legend()
 plt.grid()
-plt.title(r"Dependence $|R_{s}^{2}|$ from $\theta_{1}$ for "+fr"$\lambda={lamb} \;\mu m$")
+plt.title(r"Dependence $|R_{p}^{2}|$ from $\theta_{1}$ for "+fr"$\lambda={lamb} \;\mu m$")
 ax1.set_xlabel(r'Angle (rad)')
 
 plt.savefig("Plot1.pdf", format="pdf", bbox_inches="tight")
