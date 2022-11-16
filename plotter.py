@@ -130,16 +130,20 @@ kx_crit = (2 * pi / lamb) * emath.sqrt(1 * get_dielectic(lamb) / (1 + get_dielec
 
 plt.plot(X, np.real(emath.sqrt(calc_p_polaris_r(angle, lamb, X, 'None') * np.conj(calc_p_polaris_r(angle, lamb, X, 'None')))),
          label=r'$|R_{p}^{2}|$')
-plt.axvline(np.real(kx_crit), color='red', lw=1, label=fr'Critical k: ${round(np.real(kx_crit/k1), 3)} \cdot k_{1}$ ')
+plt.axvline(np.real(kx_crit), color='red',linestyle='dotted', lw=1, label=r'Critical $k_{1x}$:'+fr' ${round(np.real(kx_crit/k1), 3)} \cdot k_{1}$ ')
 plt.legend()
 plt.grid()
 plt.title(
     r"Dependence $|R_{p}^{2}|$ from $k_{1x}$ for " + fr"$\lambda={lamb} \;\mu m$" + r" where $k_1=\frac{2 \pi}{\lambda}$")
 ax3.set_xlabel(r'$k_{1x}$')
 ax3.set_xlim(xmin=0)
+plt.hlines(y = 0, xmin = 0, xmax = k1, color='g', linestyle='-',linewidth=1.5)
+plt.hlines(y = 0, xmin = k1, xmax=5*k1, color='r', linestyle='-',linewidth=1.5)
 # ax2.set_ylim(ymin=0)
 
-
-plt.xticks(plt.xticks()[0], [r"$" + format(r / (2 * pi / lamb), ".2g") + r"k_1$" for r in plt.xticks()[0]])
+plt.xticks(np.arange(0, b*k1+1, k1))
+ax3.text(1, -0.75, 'propagating', style='italic')
+ax3.text(4.1*k1, -0.75, 'evanescent', style='italic')
+plt.xticks(plt.xticks()[0], [r"$" + format(r / k1, ".2g") + r"k_1$" for r in plt.xticks()[0]])
 plt.savefig("Plot3.pdf", format="pdf", bbox_inches="tight")
 plt.show()
